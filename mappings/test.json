@@ -1,0 +1,22 @@
+{
+  "request": {
+    "urlPattern": "/test/loan-application/([0-9]+).*",
+    "method": "GET"
+  },
+  "response": {
+    "status": 202,
+    "jsonBody": {
+      "result": "ACCEPTED"
+    }
+  },
+  "postServeActions": {
+    "webhook": {
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "method": "POST",
+      "body": "{ \"result\": \"CALLBACK\" }",
+      "url": "https://callback.url.goes.here"
+    }
+  }
+}
